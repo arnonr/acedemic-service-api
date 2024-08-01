@@ -67,8 +67,39 @@ const filterData = (req) => {
                 contains: req.query.title,
             };
         } else {
-            $where["title_en"]["contains"] = req.query.title;
+            $where["title_th"] = {
+                contains: req.query.title,
+            };
         }
+    }
+
+    if (req.query.text_all) {
+        $where = {
+            ...$where,
+            OR: [
+                {
+                    title_th: {
+                        contains: req.query.text_all,
+                    },
+                },
+
+                {
+                    title_en: {
+                        contains: req.query.text_all,
+                    },
+                },
+                {
+                    detail_th: {
+                        contains: req.query.text_all,
+                    },
+                },
+                {
+                    detail_en: {
+                        contains: req.query.text_all,
+                    },
+                },
+            ],
+        };
     }
 
     if (req.query.news_type_id) {
@@ -78,7 +109,6 @@ const filterData = (req) => {
     if (req.query.department_id) {
         $where["department_id"] = parseInt(req.query.department_id);
     }
-
 
     if (req.query.is_publish) {
         $where["is_publish"] = parseInt(req.query.is_publish);
@@ -302,7 +332,9 @@ const methods = {
             let pathFile = await uploadController.onUploadFile(
                 req,
                 "/images/news/",
-                "news_file"
+                "news_file",
+                600,
+                400
             );
 
             if (pathFile == "error") {
@@ -368,7 +400,9 @@ const methods = {
             let pathFile = await uploadController.onUploadFile(
                 req,
                 "/images/news/",
-                "news_file"
+                "news_file",
+                600,
+                400
             );
 
             if (pathFile == "error") {

@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const uploadController = require("./UploadsController");
+const { v4: uuidv4 } = require("uuid");
 
 const prisma = new PrismaClient().$extends({
     result: {
@@ -19,6 +20,7 @@ const prisma = new PrismaClient().$extends({
         },
     },
 });
+
 // ค้นหา
 const filterData = (req) => {
     let $where = {
@@ -27,6 +29,12 @@ const filterData = (req) => {
 
     if (req.query.id) {
         $where["id"] = parseInt(req.query.id);
+    }
+
+    if (req.query.uuid) {
+        $where["uuid"] = {
+            contains: req.query.uuid,
+        };
     }
 
     if (req.query.lang && req.query.lang == "en") {
@@ -222,7 +230,9 @@ const methods = {
             let pathFile = await uploadController.onUploadFile(
                 req,
                 "/images/department/",
-                "department_file"
+                "department_file",
+                300,
+                200
             );
 
             if (pathFile == "error") {
@@ -249,6 +259,7 @@ const methods = {
 
             const item = await prisma.department.create({
                 data: {
+                    uuid: uuidv4(),
                     name_th: req.body.name_th,
                     name_en: req.body.name_en,
                     detail_th: cutFroala(req.body.detail_th),

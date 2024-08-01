@@ -315,7 +315,9 @@ const methods = {
             let pathFile = await uploadController.onUploadFile(
                 req,
                 "/images/serve/",
-                "serve_file"
+                "serve_file",
+                500,
+                350
             );
 
             if (pathFile == "error") {
@@ -356,7 +358,9 @@ const methods = {
             let pathFile = await uploadController.onUploadFile(
                 req,
                 "/images/serve/",
-                "serve_file"
+                "serve_file",
+                500,
+                350
             );
 
             if (pathFile == "error") {
