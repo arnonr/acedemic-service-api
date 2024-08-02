@@ -14,7 +14,7 @@ const methods = {
             let pathFile = null;
 
             if (!req.files || Object.keys(req.files).length === 0) {
-                throw new Error("No files were uploaded.");
+                return pathFile;
             }
 
             let uploadFile = req.files[attribute_name];
