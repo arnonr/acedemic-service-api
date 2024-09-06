@@ -25,15 +25,24 @@ const methods = {
             }
 
             let typeFile = uploadFile.mimetype.split("/");
+            let fileExtension = uploadFile.name.split(".").pop().toLowerCase();
+
             let d = new Date();
             let date = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-            let nameFile = `${date}-t-${Date.now()}.${typeFile[1]}`;
+            let nameFile = `${date}-t-${Date.now()}.${fileExtension}`;
             let pathUpload = path.resolve(
                 __dirname,
                 `../public/uploads${real_path}${nameFile}`
             );
 
-            await sharp(uploadFile.data).resize(w, h).toFile(pathUpload);
+            if (!real_path.includes("/documents/")) {
+                await sharp(uploadFile.data).resize(w, h).toFile(pathUpload);
+            } else {
+                uploadFile.mv(pathUpload, function (err) {
+                    if (err)
+                        throw new Error("File upload failed: " + err.message);
+                });
+            }
 
             pathFile = `${real_path}${nameFile}`;
 
