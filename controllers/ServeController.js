@@ -49,6 +49,14 @@ const filterData = (req) => {
         };
     }
 
+    if (req.query.type_ids) {
+        console.log(req.query.type_ids);
+        $where["type_id"] = {
+            in: req.query.type_ids.split(",").map(Number),
+            //   mode: "insensitive",
+        };
+    }
+
     if (req.query.text_all) {
         $where = {
             ...$where,
@@ -94,6 +102,10 @@ const filterData = (req) => {
 
     if (req.query.service_category_id) {
         $where["service_category_id"] = parseInt(req.query.service_category_id);
+    }
+
+    if (req.query.type_id) {
+        $where["type_id"] = parseInt(req.query.type_id);
     }
 
     if (req.query.is_publish) {
@@ -220,6 +232,7 @@ const selectField = {
     price5: true,
     phone: true,
     email: true,
+    unit_th: true,
 };
 
 // ปรับ Language
@@ -452,7 +465,7 @@ const methods = {
                         req.body.price5 != null
                             ? Number(req.body.price5)
                             : undefined,
-                            
+
                     breif_detail_th:
                         req.body.breif_detail_th != null
                             ? req.body.breif_detail_th
