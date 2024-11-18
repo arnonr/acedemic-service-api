@@ -24,6 +24,7 @@ const booking = require("./api/booking");
 const report = require("./api/report");
 const serviceCategory = require("./api/service-category");
 const serve = require("./api/serve");
+const type = require("./api/type");
 
 const router = express.Router();
 
@@ -52,7 +53,8 @@ router.use(
     router.use("/booking", booking),
     router.use("/report", report),
     router.use("/service-category", serviceCategory),
-    router.use("/serve", serve)
+    router.use("/serve", serve),
+    router.use("/type", type)
 );
 
 module.exports = router;

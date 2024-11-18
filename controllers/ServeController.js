@@ -180,6 +180,7 @@ const selectField = {
     serve_file: true,
     department_id: true,
     service_category_id: true,
+    type_id: true,
     detail_th: true,
     detail_en: true,
     rates_th: true,
@@ -200,13 +201,25 @@ const selectField = {
             name: true,
         },
     },
-
     service_category: {
         select: {
             id: true,
             name_th: true,
         },
     },
+    type: {
+        select: {
+            name_th: true,
+        },
+    },
+    breif_detail_th: true,
+    price1: true,
+    price2: true,
+    price3: true,
+    price4: true,
+    price5: true,
+    phone: true,
+    email: true,
 };
 
 // ปรับ Language
@@ -343,6 +356,15 @@ const methods = {
                     created_by: "arnonr",
                     updated_by: "arnonr",
                     service_category_id: Number(req.body.service_category_id),
+                    type_id: Number(req.body.type_id),
+                    price1: Number(req.body.price1),
+                    price2: Number(req.body.price1),
+                    price3: Number(req.body.price1),
+                    price4: Number(req.body.price1),
+                    price5: Number(req.body.price1),
+                    breif_detail_th: req.body.breif_detail_th,
+                    phone: req.body.phone,
+                    email: req.body.email,
                 },
             });
 
@@ -406,6 +428,37 @@ const methods = {
                         req.body.service_category_id != null
                             ? Number(req.body.service_category_id)
                             : undefined,
+                    type_id:
+                        req.body.type_id != null
+                            ? Number(req.body.type_id)
+                            : undefined,
+                    price1:
+                        req.body.price1 != null
+                            ? Number(req.body.price1)
+                            : undefined,
+                    price2:
+                        req.body.price2 != null
+                            ? Number(req.body.price2)
+                            : undefined,
+                    price3:
+                        req.body.price3 != null
+                            ? Number(req.body.price3)
+                            : undefined,
+                    price4:
+                        req.body.price4 != null
+                            ? Number(req.body.price4)
+                            : undefined,
+                    price5:
+                        req.body.price5 != null
+                            ? Number(req.body.price5)
+                            : undefined,
+                            
+                    breif_detail_th:
+                        req.body.breif_detail_th != null
+                            ? req.body.breif_detail_th
+                            : undefined,
+                    phone: req.body.phone != null ? req.body.phone : undefined,
+                    email: req.body.email != null ? req.body.email : undefined,
                 },
             });
 

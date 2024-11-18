@@ -243,6 +243,8 @@ model serve {
     department_id       Int
     service_category    service_category @relation(fields: [service_category_id], references: [id])
     service_category_id Int
+    type                type?             @relation(fields: [type_id], references: [id])
+    type_id             Int?
     title_th            String           @db.VarChar(500)
     title_en            String?          @db.VarChar(500)
     serve_file          String?          @db.VarChar(500)
@@ -250,6 +252,16 @@ model serve {
     detail_en           String?          @db.LongText
     rates_th            String?          @db.LongText
     rates_en            String?          @db.LongText
+    breif_detail_th     String?          @db.LongText
+    breif_detail_en     String?          @db.LongText
+    price1              Int?
+    price2              Int?
+    price3              Int?
+    price4              Int?
+    price5              Int?
+    unit_th             String?          @db.VarChar(500)
+    phone               String?          @db.VarChar(500)
+    email               String?          @db.VarChar(500)
     location_th         String?          @db.LongText
     location_en         String?          @db.LongText
     contact_th          String?          @db.LongText
@@ -263,4 +275,20 @@ model serve {
     updated_at          DateTime?        @updatedAt
     updated_by          String?          @db.VarChar(255)
     deleted_at          DateTime?
+}
+
+model type {
+    id         Int       @id @default(autoincrement())
+    name_th    String    @db.VarChar(500)
+    name_en    String?   @db.VarChar(500)
+    detail_th  String?   @db.LongText
+    detail_en  String?   @db.LongText
+    is_active  Int       @default(1)
+    is_publish Int       @default(1)
+    created_at DateTime? @default(now()) @db.DateTime(0)
+    created_by String?   @db.VarChar(255)
+    updated_at DateTime? @updatedAt
+    updated_by String?   @db.VarChar(255)
+    deleted_at DateTime?
+    serves     serve[]
 }
