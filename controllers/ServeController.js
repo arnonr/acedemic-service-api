@@ -82,6 +82,15 @@ const filterData = (req) => {
                         contains: req.query.text_all,
                     },
                 },
+                {
+                    test_types: {
+                        some: {
+                            name_th: {
+                                contains: req.query.text_all,
+                            },
+                        },
+                    },
+                },
             ],
         };
     }
