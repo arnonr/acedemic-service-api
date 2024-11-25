@@ -243,7 +243,7 @@ model serve {
     department_id       Int
     service_category    service_category @relation(fields: [service_category_id], references: [id])
     service_category_id Int
-    type                type?             @relation(fields: [type_id], references: [id])
+    type                type?            @relation(fields: [type_id], references: [id])
     type_id             Int?
     title_th            String           @db.VarChar(500)
     title_en            String?          @db.VarChar(500)
@@ -275,6 +275,7 @@ model serve {
     updated_at          DateTime?        @updatedAt
     updated_by          String?          @db.VarChar(255)
     deleted_at          DateTime?
+    test_type           test_type[]
 }
 
 model type {
@@ -291,4 +292,28 @@ model type {
     updated_by String?   @db.VarChar(255)
     deleted_at DateTime?
     serves     serve[]
+}
+
+model test_type {
+    id         Int       @id @default(autoincrement())
+    name_th    String    @db.VarChar(500)
+    name_en    String?   @db.VarChar(500)
+    price1     Int?
+    price2     Int?
+    price3     Int?
+    price4     Int?
+    price5     Int?
+    unit_th    String?   @db.VarChar(500)
+    level      Int?
+    detail_th  String?   @db.LongText
+    detail_en  String?   @db.LongText
+    is_active  Int       @default(1)
+    is_publish Int       @default(1)
+    created_at DateTime? @default(now()) @db.DateTime(0)
+    created_by String?   @db.VarChar(255)
+    updated_at DateTime? @updatedAt
+    updated_by String?   @db.VarChar(255)
+    deleted_at DateTime?
+    serve      serve?    @relation(fields: [serve_id], references: [id])
+    serve_id   Int?
 }

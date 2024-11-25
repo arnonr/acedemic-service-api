@@ -25,6 +25,7 @@ const report = require("./api/report");
 const serviceCategory = require("./api/service-category");
 const serve = require("./api/serve");
 const type = require("./api/type");
+const testType = require("./api/test-type");
 
 const router = express.Router();
 
@@ -54,7 +55,8 @@ router.use(
     router.use("/report", report),
     router.use("/service-category", serviceCategory),
     router.use("/serve", serve),
-    router.use("/type", type)
+    router.use("/type", type),
+    router.use("/test-type", testType)
 );
 
 module.exports = router;

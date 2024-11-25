@@ -224,6 +224,11 @@ const selectField = {
             name_th: true,
         },
     },
+    test_type:{
+        select:{
+            name_th:true
+        }
+    },
     breif_detail_th: true,
     price1: true,
     price2: true,
@@ -382,6 +387,8 @@ const methods = {
                         req.body.price5 != "" ? Number(req.body.price5) : null,
                     breif_detail_th: req.body.breif_detail_th,
                     phone: req.body.phone,
+                    unit_th:
+                        req.body.unit_th != null ? req.body.unit_th : undefined,
                     email: req.body.email,
                 },
             });
