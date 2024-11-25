@@ -370,11 +370,16 @@ const methods = {
                     updated_by: "arnonr",
                     service_category_id: Number(req.body.service_category_id),
                     type_id: Number(req.body.type_id),
-                    price1: req.body.price1 != "" ? Number(req.body.price1) : null,
-                    price2: req.body.price2 != "" ? Number(req.body.price2) : null,
-                    price3: req.body.price3 != "" ? Number(req.body.price3) : null,
-                    price4: req.body.price4 != "" ? Number(req.body.price4) : null,
-                    price5: req.body.price5 != "" ? Number(req.body.price5) : null,
+                    price1:
+                        req.body.price1 != "" ? Number(req.body.price1) : null,
+                    price2:
+                        req.body.price2 != "" ? Number(req.body.price2) : null,
+                    price3:
+                        req.body.price3 != "" ? Number(req.body.price3) : null,
+                    price4:
+                        req.body.price4 != "" ? Number(req.body.price4) : null,
+                    price5:
+                        req.body.price5 != "" ? Number(req.body.price5) : null,
                     breif_detail_th: req.body.breif_detail_th,
                     phone: req.body.phone,
                     email: req.body.email,
@@ -446,25 +451,15 @@ const methods = {
                             ? Number(req.body.type_id)
                             : undefined,
                     price1:
-                        req.body.price1 != ""
-                            ? Number(req.body.price1)
-                            : null,
+                        req.body.price1 != "" ? Number(req.body.price1) : null,
                     price2:
-                        req.body.price2 != ""
-                            ? Number(req.body.price2)
-                            :  null,
+                        req.body.price2 != "" ? Number(req.body.price2) : null,
                     price3:
-                        req.body.price3 != ""
-                            ? Number(req.body.price3)
-                            :  null,
+                        req.body.price3 != "" ? Number(req.body.price3) : null,
                     price4:
-                        req.body.price4 != ""
-                            ? Number(req.body.price4)
-                            :  null,
+                        req.body.price4 != "" ? Number(req.body.price4) : null,
                     price5:
-                        req.body.price5 != ""
-                            ? Number(req.body.price5)
-                            : null,
+                        req.body.price5 != "" ? Number(req.body.price5) : null,
 
                     breif_detail_th:
                         req.body.breif_detail_th != null
@@ -472,6 +467,8 @@ const methods = {
                             : undefined,
                     phone: req.body.phone != null ? req.body.phone : undefined,
                     email: req.body.email != null ? req.body.email : undefined,
+                    unit_th:
+                        req.body.unit_th != null ? req.body.unit_th : undefined,
                 },
             });
 
