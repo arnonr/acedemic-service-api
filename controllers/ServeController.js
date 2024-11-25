@@ -224,10 +224,18 @@ const selectField = {
             name_th: true,
         },
     },
-    test_type:{
-        select:{
-            name_th:true
-        }
+    test_types: {
+        select: {
+            id: true,
+            name_th: true,
+            price1: true,
+            price2: true,
+            price3: true,
+            price4: true,
+            price5: true,
+            unit_th: true,
+            level: true,
+        },
     },
     breif_detail_th: true,
     price1: true,

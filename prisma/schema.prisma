@@ -275,7 +275,7 @@ model serve {
     updated_at          DateTime?        @updatedAt
     updated_by          String?          @db.VarChar(255)
     deleted_at          DateTime?
-    test_type           test_type[]
+    test_types           test_type[]
 }
 
 model type {
